@@ -25,7 +25,9 @@ int main(){
     while(opcion1!=3){
         menu1();
         while(scanf("%i",&opcion1)==0){
+            //al poner el scan dentro del while se evita que '0' sea una opcion
 				while (getchar() != '\n' );
+                //con este getchar se evita que se pueda agregar una palabra
 				system("cls");
     			menu1();
     		};
