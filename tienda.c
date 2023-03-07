@@ -4,7 +4,11 @@
 void menu1();
 void menu2();
 
-typedef struct registro registro;
+struct registro{
+    char nombre[12];
+	int stock;
+	float codig_barras;
+}registro[3];
 
 int main(){
 
@@ -22,11 +26,19 @@ int main(){
     		};
         switch (opcion1)
         {
-            case 1:                
+            case 1:
+                printf("por favor, ingrese el nombre del producto: ");
+                scanf("%s",&registro[cantProductos].nombre);
+                printf("por favor, ingrese la cantidad en stock: ");
+                scanf("%i",&registro[cantProductos].stock);
+                printf("por favor, ingrese el codigo de barras: ");
+                scanf("%f",&registro[cantProductos].codig_barras);
+                printf("producto agregado.\n");
+                cantProductos++;
                 break;
             case 2:
                 while (opcion2!=4){
-                    system("cls");
+                    
                     menu2();
                     while( scanf("%i",&opcion2)==0){
                         while (getchar() != '\n');
@@ -35,7 +47,15 @@ int main(){
                     };
                     switch (opcion2)
                     {
-                    case 1:                        
+                    case 1:
+                        for (int i = 0; i < cantProductos; i++)
+                        {
+                            printf("%i nombre del producto: %s\n",i+1,registro[i].nombre);
+                            printf("  cantidad en stock del producto: %i\n",registro[i].stock);
+                            printf("  nombre del producto: %.4f\n",registro[i].codig_barras);
+                            printf("\n");
+                        }
+                                                
                         break;
                     case 2:
                         break;
@@ -78,9 +98,3 @@ void menu2(){
     return;
 }
 
-struct registro{
-    char nombre[4];
-    int cant_productos;
-	int stock;
-	int codig_barras;
-};
