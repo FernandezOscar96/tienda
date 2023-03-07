@@ -4,6 +4,8 @@
 void menu1();
 void menu2();
 
+typedef struct registro registro;
+
 int main(){
 
     int opcion1=0,opcion2=0;
@@ -75,3 +77,10 @@ void menu2(){
     printf ("\n4. volver al menu anterior.\n");
     return;
 }
+
+struct registro{
+    char nombre[4];
+    int cant_productos;
+	int stock;
+	int codig_barras;
+};
