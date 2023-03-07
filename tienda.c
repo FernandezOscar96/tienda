@@ -1,22 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void menu1(){
-    printf("\nPor favor seleccione una opcion:");
-    printf("\n1. Ingreso de un nuevo producto:");
-    printf("\n2. Productos ingresados:");
-    printf("\n3. salir");
-    printf("\n");
-    return;
-}
-void menu2(){
-    printf ("\nPor favor seleccione una opcion:"); 
-    printf ("\n1. Cantidad total de productos ingresados."); 
-    printf ("\n2. Cantidad numerica de productos.");
-    printf ("\n3. Cantidad de productos de tamanio mediano.");
-    printf ("\n4. volver al menu anterior.\n");
-    return;
-}
+void menu1();
+void menu2();
+
 int main(){
 
     int opcion1=0,opcion2=0;
@@ -72,3 +59,19 @@ int main(){
     return 0;
 }
 
+void menu1(){
+    printf("\nPor favor seleccione una opcion:");
+    printf("\n1. Ingreso de un nuevo producto:");
+    printf("\n2. Productos ingresados:");
+    printf("\n3. salir");
+    printf("\n");
+    return;
+}
+void menu2(){
+    printf ("\nPor favor seleccione una opcion:"); 
+    printf ("\n1. Cantidad total de productos ingresados."); 
+    printf ("\n2. Cantidad numerica de productos.");
+    printf ("\n3. Cantidad de productos de tamanio mediano.");
+    printf ("\n4. volver al menu anterior.\n");
+    return;
+}
