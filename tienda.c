@@ -15,19 +15,16 @@ int main(){
 
     int opcion1=0,opcion2=0;
     int cantProductos=0,limite=2;
-    
-
     while(opcion1!=3){
         menu1();
         while(scanf("%i",&opcion1)==0){
             //al poner el scan dentro del while se evita que '0' sea una opcion
-				while (getchar() != '\n' );
+				while (getchar() !='\n');
                 //con este getchar se evita que se pueda agregar una palabra
 				system("cls");
     			menu1();
     		};
-        switch (opcion1)
-        {
+        switch (opcion1){
             case 1:
                 if (cantProductos==limite){
                     printf("\nno es posible agregar mas productos.\n");
@@ -47,24 +44,20 @@ int main(){
             case 2:
                 system("cls");
                 while (opcion2!=4){
-
                     menu2();
                     while( scanf("%i",&opcion2)==0){
                         system("cls");
                         while (getchar() != '\n');
-                        
                         menu2();
                     };
                     switch (opcion2)
                     {
                     case 1:
-                        for (int i = 0; i < cantProductos; i++)
-                        {   
+                        for (int i = 0; i < cantProductos; i++){   
                             printf("\n%i nombre del producto: %s\n",i+1,registro[i].nombre);
                             printf("  cantidad en stock del producto: %i\n",registro[i].stock);
                             printf("  codigo de barras: %.4f\n\n",registro[i].codig_barras);
-                        }
-                                                
+                        }                      
                         break;
                     case 2:
                         printf("\nla cantidad de productos ingresados es de: %i\n", cantProductos);
