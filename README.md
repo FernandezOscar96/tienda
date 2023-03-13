@@ -1,2 +1,2 @@
 # tienda
-la funcion del programa es de agregar un producto, visualizarlo y ordenarlo por tamaño.
+la funcion del programa es de agregar un producto, visualizar la cantidad y ordenarlo por tamaño.
