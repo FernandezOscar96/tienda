@@ -9,12 +9,12 @@ struct registro{
     char nombre[12];
 	int stock;
 	float codig_barras;
-}registro[2];
-
+}registro[1];
+//para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 por encima de registro[], ya que uno especifica la cantidad de productos(limite) y el otro la cantidad que puede ser registrada(registro[])
 int main(){
 
     int opcion1=0,opcion2=0;
-    int cantProductos=0,limite=3;
+    int cantProductos=0,limite=2;
     
 
     while(opcion1!=3){
@@ -65,6 +65,10 @@ int main(){
                                                 
                         break;
                     case 2:
+                        printf("\nla cantidad de productos ingresados es de: %i\n", cantProductos);
+                        if (cantProductos==limite){
+                            printf("se alcanzo el limite de productos a ingresar.\n");
+                        }
                         break;
                     case 3:
                         break;
