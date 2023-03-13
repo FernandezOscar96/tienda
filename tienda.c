@@ -45,12 +45,14 @@ int main(){
                 }    
                 break;
             case 2:
+                system("cls");
                 while (opcion2!=4){
-                    
+
                     menu2();
                     while( scanf("%i",&opcion2)==0){
-                        while (getchar() != '\n');
                         system("cls");
+                        while (getchar() != '\n');
+                        
                         menu2();
                     };
                     switch (opcion2)
