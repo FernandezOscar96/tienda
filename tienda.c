@@ -3,7 +3,7 @@
 
 void menu1();
 void menu2();
-
+void lista(int cantProductos);
 struct registro{
     
     char nombre[12];
@@ -53,11 +53,7 @@ int main(){
                     switch (opcion2)
                     {
                     case 1:
-                        for (int i = 0; i < cantProductos; i++){   
-                            printf("\n%i nombre del producto: %s\n",i+1,registro[i].nombre);
-                            printf("  cantidad en stock del producto: %i\n",registro[i].stock);
-                            printf("  codigo de barras: %.4f\n\n",registro[i].codig_barras);
-                        }                      
+                        lista(cantProductos);              
                         break;
                     case 2:
                         printf("\nla cantidad de productos ingresados es de: %i\n", cantProductos);
@@ -86,7 +82,6 @@ int main(){
     }
     return 0;
 }
-
 void menu1(){
     printf("\nPor favor seleccione una opcion:");
     printf("\n1. Ingreso de un nuevo producto:");
@@ -103,4 +98,10 @@ void menu2(){
     printf ("\n4. volver al menu anterior.\n");
     return;
 }
-
+void lista(int cantProductos){
+    for (int i = 0; i < cantProductos; i++){   
+        printf("\n%i nombre del producto: %s\n",i+1,registro[i].nombre);
+        printf("  cantidad en stock del producto: %i\n",registro[i].stock);
+        printf("  codigo de barras: %.4f\n\n",registro[i].codig_barras);
+    }  
+}
