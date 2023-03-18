@@ -5,14 +5,12 @@ void menu1();
 void menu2();
 void lista(int cantProductos);
 struct registro{
-    
     char nombre[12];
 	int stock;
-	float codig_barras;
+	int codigBarras;
 }registro[1];
 //para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 por encima de registro[], ya que uno especifica la cantidad de productos(limite) y el otro la cantidad que puede ser registrada(registro[])
 int main(){
-
     int opcion1=0,opcion2=0;
     int cantProductos=0,limite=2;
     while(opcion1!=3){
@@ -30,13 +28,12 @@ int main(){
                     printf("\nno es posible agregar mas productos.\n");
                 }
                 else{
-                    
                     printf("\npor favor, ingrese el nombre del producto: ");
                     scanf("%s",&registro[cantProductos].nombre);
                     printf("por favor, ingrese la cantidad en stock: ");
                     scanf("%i",&registro[cantProductos].stock);
-                    printf("por favor, ingrese el codigo de barras: ");
-                    scanf("%f",&registro[cantProductos].codig_barras);
+                    printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
+                    scanf("%i",&registro[cantProductos].codigBarras);
                     printf("producto agregado.\n");
                     cantProductos++;
                 }    
@@ -99,9 +96,26 @@ void menu2(){
     return;
 }
 void lista(int cantProductos){
-    for (int i = 0; i < cantProductos; i++){   
-        printf("\n%i nombre del producto: %s\n",i+1,registro[i].nombre);
-        printf("  cantidad en stock del producto: %i\n",registro[i].stock);
-        printf("  codigo de barras: %.4f\n\n",registro[i].codig_barras);
+    for (int a = 0; a < cantProductos; a++){
+        
+        int contador=0;  
+        int div=registro[a].codigBarras;
+        //con este while se sabe de cuantos digitos es el codigo de barras, lo que hace es dividir el codigo de barras copiado por 10 para ir sacando 1 digito en cada recorrido del while;
+        while (div != 0) {
+            contador++;
+            div /= 10;
+        }
+        printf("\n%i nombre del producto: %s\n",a+1,registro[a].nombre);
+        printf("  cantidad en stock del producto: %i\n",registro[a].stock);
+        printf("  codigo de barras: ");
+        for (int i = 9; i>=contador; i--){
+            //con este for se agregan 0 dependiendo de la longitud del codigo de barras;
+            if (i>contador){
+                printf("0");
+            }
+            if (i==contador){
+                printf("%d\n",registro[a].codigBarras);
+            }
+        }
     }  
 }
