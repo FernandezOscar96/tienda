@@ -3,6 +3,7 @@
 
 void menu1();
 void menu2();
+int agregarProducto(int cantProductos);
 void lista(int cantProductos);
 struct registro{
     char nombre[12];
@@ -28,13 +29,7 @@ int main(){
                     printf("\nno es posible agregar mas productos.\n");
                 }
                 else{
-                    printf("\npor favor, ingrese el nombre del producto: ");
-                    scanf("%s",&registro[cantProductos].nombre);
-                    printf("por favor, ingrese la cantidad en stock: ");
-                    scanf("%i",&registro[cantProductos].stock);
-                    printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
-                    scanf("%i",&registro[cantProductos].codigBarras);
-                    printf("producto agregado.\n");
+                    agregarProducto(cantProductos);
                     cantProductos++;
                 }    
                 break;
@@ -95,9 +90,17 @@ void menu2(){
     printf ("\n4. volver al menu anterior.\n");
     return;
 }
+int agregarProducto(int cantProductos){
+    printf("\npor favor, ingrese el nombre del producto: ");
+    scanf("%s",&registro[cantProductos].nombre);
+    printf("por favor, ingrese la cantidad en stock: ");
+    scanf("%i",&registro[cantProductos].stock);
+    printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
+    scanf("%i",&registro[cantProductos].codigBarras);
+    printf("producto agregado.\n");
+}
 void lista(int cantProductos){
     for (int a = 0; a < cantProductos; a++){
-        
         int contador=0;  
         int div=registro[a].codigBarras;
         //con este while se sabe de cuantos digitos es el codigo de barras, lo que hace es dividir el codigo de barras copiado por 10 para ir sacando 1 digito en cada recorrido del while;
