@@ -16,9 +16,9 @@ struct registro{
 int main(){
     int opcion1=0,opcion2=0,opcion3=0;
     int cantProductos=0,limite=0;
-    printf("la cantidad de productos es: %i\n",limite);
+    printf("la cantidad de productos maximos es: %i\n",limite);
     limite=limitador(limite);
-    printf("la cantidad de productos es: %i\n",limite);
+    printf("la cantidad de productos maximos es: %i\n",limite);
     while(opcion1!=3){
         menu1();
         while(scanf("%i",&opcion1)==0){
@@ -76,32 +76,32 @@ int main(){
                             switch (opcion3){
 
                                 case 1:
-                                op='s';
-                                listaTamano(cantProductos,op);
-                                break;
+                                    op='s';
+                                    listaTamano(cantProductos,op);
+                                    break;
                                 case 2:
-                                op='m';
-                                listaTamano(cantProductos,op);
-                                break;
+                                    op='m';
+                                    listaTamano(cantProductos,op);
+                                    break;
                                 case 3:
-                                op='l';
-                                listaTamano(cantProductos,op);
-                                break;
+                                    op='l';
+                                    listaTamano(cantProductos,op);
+                                    break;
                                 case 4:
-                                system("cls");
-                                break;
+                                    system("cls");
+                                    break;
                                 default:
-                                system("cls");
-                                break;
+                                    system("cls");
+                                    break;
                             }
                         }
                         break;
                     case 4:
-                    system("cls");
-                    break;
-                    default:
-                    system("cls");
-                    break;
+                        system("cls");
+                        break;
+                        default:
+                        system("cls");
+                        break;
                     }
                 }
                 break;
@@ -149,7 +149,6 @@ int limitador(int limite){
     if (preselec==2){
         return limitador=99999;
     }
-    
 }
 int agregarProducto(int cantProductos){
     int opcion3=0,total;
@@ -257,8 +256,7 @@ system("cls");
                 printf("M");
             }
             if (registro[a].tamano=='l'){
-                printf("L");
-                
+                printf("L");  
             }
             printf("\n");
         }
