@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 void menu1();
 void menu2();
 int agregarProducto(int cantProductos);
@@ -9,7 +9,8 @@ struct registro{
     char nombre[12];
 	int stock;
 	int codigBarras;
-}registro[1];
+    char tamano;
+    }registro[1];
 //para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 por encima de registro[], ya que uno especifica la cantidad de productos(limite) y el otro la cantidad que puede ser registrada(registro[])
 int main(){
     int opcion1=0,opcion2=0;
@@ -91,12 +92,37 @@ void menu2(){
     return;
 }
 int agregarProducto(int cantProductos){
+    int opcion3=0;
     printf("\npor favor, ingrese el nombre del producto: ");
     scanf("%s",&registro[cantProductos].nombre);
     printf("por favor, ingrese la cantidad en stock: ");
     scanf("%i",&registro[cantProductos].stock);
     printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
     scanf("%i",&registro[cantProductos].codigBarras);
+    printf("por favor, elija el tamanio del producto:\n");
+    while (opcion3<1||opcion3>3){
+        printf("1. Pequenio\t2. Mediano\t3. Grande\n");
+        while(scanf("%i",&opcion3)==0){
+				while (getchar() !='\n');
+				system("cls");
+                printf("opcion no valida:\n");
+                printf("por favor, elija el tamaño del producto:\n");
+                printf("1. Pequeño\t2. Mediano\t3. Grande\n");
+    		};
+        switch (opcion3){
+        case 1: registro[cantProductos].tamano='p';
+        break;
+        case 2: registro[cantProductos].tamano='m';
+        break;
+        case 3: registro[cantProductos].tamano='g';
+        break;
+        default:
+        system("cls");
+        printf("opcion no valida:\n");
+        printf("por favor, elija el tamanio del producto:\n");
+        printf("1. Pequenio\t2. Mediano\t3. Grande\n");
+        }
+    }
     printf("producto agregado.\n");
 }
 void lista(int cantProductos){
@@ -119,6 +145,16 @@ void lista(int cantProductos){
             if (i==contador){
                 printf("%d\n",registro[a].codigBarras);
             }
+        }
+        printf("  tamanio del producto: ");
+        if (registro[a].tamano=='p'){
+            printf("pequenio\n");
+        }
+        if (registro[a].tamano=='m'){
+            printf("mediano\n");
+        }
+        if (registro[a].tamano=='g'){
+            printf("grande\n");
         }
     }  
 }
