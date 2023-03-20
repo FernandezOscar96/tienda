@@ -30,6 +30,7 @@ int main(){
         switch (opcion1){
             case 1:
                 if (cantProductos==limite){
+                    system("cls");
                     printf("\nno es posible agregar mas productos.\n");
                 }
                 else{
@@ -38,8 +39,10 @@ int main(){
                 }    
                 break;
             case 2:
+                opcion2=0;
+                system("cls");
                 while (opcion2!=4){
-                    system("cls");
+                    
                     menu2();
                     while( scanf("%i",&opcion2)==0){
                         while (getchar() != '\n');
@@ -52,6 +55,7 @@ int main(){
                         lista(cantProductos);              
                         break;
                     case 2:
+                        system("cls");
                         printf("\nla cantidad de productos ingresados es de: %i\n", cantProductos);
                         if (cantProductos==limite){
                             printf("se alcanzo el limite de productos a ingresar.\n");
@@ -83,6 +87,7 @@ int main(){
                                 listaTamano(cantProductos,op);
                                 break;
                                 case 4:
+                                system("cls");
                                 break;
                                 default:
                                 system("cls");
@@ -91,14 +96,13 @@ int main(){
                         }
                         break;
                     case 4:
-                        break;
+                    system("cls");
+                    break;
                     default:
-                        system("cls");
-                        break;
+                    system("cls");
+                    break;
                     }
                 }
-                opcion2=0;
-                system("cls");
                 break;
             case 3:
                 break;
@@ -165,9 +169,11 @@ int agregarProducto(int cantProductos){
         printf("1. Pequenio\t2. Mediano\t3. Grande\n");
         }
     }
+    system("cls");
     printf("producto agregado.\n");
 }
 void lista(int cantProductos){
+    system("cls");
     for (int a = 0; a < cantProductos; a++){
         int contador=0;  
         int div=registro[a].codigBarras;
@@ -199,11 +205,12 @@ void lista(int cantProductos){
         if (registro[a].tamano=='g'){
             printf("grande\n");
         }
-    }  
+    }
+    return;  
 }
 
 void listaTamano(int cantProductos, char op){
-
+system("cls");
 for (int a = 0; a < cantProductos; a++){
     if (registro[a].tamano==op){
         int contador=0;  
