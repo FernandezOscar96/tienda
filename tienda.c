@@ -3,6 +3,7 @@
 void menu1();
 void menu2();
 void menu3();
+int limitador(int limite);
 int agregarProducto(int cantProductos);
 void lista(int cantProductos);
 void listaTamano(int cantProductos, char op);
@@ -11,13 +12,13 @@ struct registro{
 	int stock;
 	int codigBarras;
     char tamano;
-    }registro[4];
-//para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 
-//por encima de registro[], ya que uno especifica la cantidad de productos(limite) y 
-//el otro la cantidad que puede ser registrada(registro[])
+    }registro[99999];
 int main(){
     int opcion1=0,opcion2=0,opcion3=0;
-    int cantProductos=0,limite=5;
+    int cantProductos=0,limite=0;
+    printf("la cantidad de productos es: %i\n",limite);
+    limite=limitador(limite);
+    printf("la cantidad de productos es: %i\n",limite);
     while(opcion1!=3){
         menu1();
         while(scanf("%i",&opcion1)==0){
@@ -134,6 +135,22 @@ void menu3(){
     printf("3. Grande.\n");
     printf("4. volver al menu anterior.\n");
 }
+int limitador(int limite){
+    int preselec=0;
+    int limitador=0;
+    printf("Bienvenido, desea agregar un limite?\n");
+    printf("1. Si\t\t2. No\n");
+    scanf("%i",&preselec);
+    if (preselec==1){
+        printf("ingrese la cantidad maxima para ingresar un producto: \n");
+        scanf("%i",&limite);
+        return limitador=limitador+limite;
+    }
+    if (preselec==2){
+        return limitador=99999;
+    }
+    
+}
 int agregarProducto(int cantProductos){
     int opcion3=0,total;
     printf("\npor favor, ingrese el nombre del producto: ");
@@ -211,7 +228,6 @@ void lista(int cantProductos){
         printf("\n");
     }  
 }
-
 void listaTamano(int cantProductos, char op){
 system("cls");
     for (int a = 0; a < cantProductos; a++){
