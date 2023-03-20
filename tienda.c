@@ -3,10 +3,10 @@
 void menu1();
 void menu2();
 void menu3();
-int limitador(int limite);
-int agregarProducto(int cantProductos);
 void lista(int cantProductos);
 void listaTamano(int cantProductos, char op);
+int limitador(int limite);
+int agregarProducto(int cantProductos);
 struct registro{
     char nombre[5];
 	int stock;
@@ -135,62 +135,6 @@ void menu3(){
     printf("3. Grande.\n");
     printf("4. volver al menu anterior.\n");
 }
-int limitador(int limite){
-    int preselec=0;
-    int limitador=0;
-    printf("Bienvenido, desea agregar un limite?\n");
-    printf("1. Si\t\t2. No\n");
-    scanf("%i",&preselec);
-    if (preselec==1){
-        printf("ingrese la cantidad maxima para ingresar un producto: \n");
-        scanf("%i",&limite);
-        return limitador=limitador+limite;
-    }
-    if (preselec==2){
-        return limitador=99999;
-    }
-}
-int agregarProducto(int cantProductos){
-    int opcion3=0,total;
-    printf("\npor favor, ingrese el nombre del producto: ");
-    scanf("%5s",&registro[cantProductos].nombre);   
-    printf("por favor, ingrese la cantidad en stock: ");
-    scanf("%i",&total);
-    if (total==0||total>100){
-        printf("exede cantidad de stock.");
-        return 0;
-    }
-    printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
-    scanf("%i",&registro[cantProductos].codigBarras);
-    registro[cantProductos].stock=total;
-    printf("por favor, elija el tamanio del producto:\n");
-    while (opcion3<1||opcion3>3){
-        printf("1. Pequenio\t2. Mediano\t3. Grande\n");
-        while(scanf("%i",&opcion3)==0){
-				while (getchar() !='\n');
-				system("cls");
-                printf("opcion no valida:\n");
-                printf("por favor, elija el tamaño del producto:\n");
-                printf("1. Pequeño\t2. Mediano\t3. Grande\n");
-    		};
-        switch (opcion3){
-        case 1: registro[cantProductos].tamano='s';
-        break;
-        case 2: registro[cantProductos].tamano='m';
-        break;
-        case 3: registro[cantProductos].tamano='l';
-        break;
-        default:
-        system("cls");
-        printf("opcion no valida:\n");
-        printf("por favor, elija el tamanio del producto:\n");
-        printf("1. Pequenio\t2. Mediano\t3. Grande\n");
-        }
-    }
-    system("cls");
-    printf("producto agregado.\n");
-    return 0;
-}
 void lista(int cantProductos){
     system("cls");
     for (int a = 0; a < cantProductos; a++){
@@ -261,4 +205,60 @@ system("cls");
             printf("\n");
         }
     }
+}
+int limitador(int limite){
+    int preselec=0;
+    int limitador=0;
+    printf("Bienvenido, desea agregar un limite?\n");
+    printf("1. Si\t\t2. No\n");
+    scanf("%i",&preselec);
+    if (preselec==1){
+        printf("ingrese la cantidad maxima para ingresar un producto: \n");
+        scanf("%i",&limite);
+        return limitador=limitador+limite;
+    }
+    if (preselec==2){
+        return limitador=99999;
+    }
+}
+int agregarProducto(int cantProductos){
+    int opcion3=0,total;
+    printf("\npor favor, ingrese el nombre del producto: ");
+    scanf("%5s",&registro[cantProductos].nombre);   
+    printf("por favor, ingrese la cantidad en stock: ");
+    scanf("%i",&total);
+    if (total==0||total>100){
+        printf("exede cantidad de stock.");
+        return 0;
+    }
+    printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
+    scanf("%i",&registro[cantProductos].codigBarras);
+    registro[cantProductos].stock=total;
+    printf("por favor, elija el tamanio del producto:\n");
+    while (opcion3<1||opcion3>3){
+        printf("1. Pequenio\t2. Mediano\t3. Grande\n");
+        while(scanf("%i",&opcion3)==0){
+				while (getchar() !='\n');
+				system("cls");
+                printf("opcion no valida:\n");
+                printf("por favor, elija el tamaño del producto:\n");
+                printf("1. Pequeño\t2. Mediano\t3. Grande\n");
+    		};
+        switch (opcion3){
+        case 1: registro[cantProductos].tamano='s';
+        break;
+        case 2: registro[cantProductos].tamano='m';
+        break;
+        case 3: registro[cantProductos].tamano='l';
+        break;
+        default:
+        system("cls");
+        printf("opcion no valida:\n");
+        printf("por favor, elija el tamanio del producto:\n");
+        printf("1. Pequenio\t2. Mediano\t3. Grande\n");
+        }
+    }
+    system("cls");
+    printf("producto agregado.\n");
+    return 0;
 }
