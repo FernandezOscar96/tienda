@@ -137,7 +137,7 @@ void menu3(){
 int agregarProducto(int cantProductos){
     int opcion3=0,total;
     printf("\npor favor, ingrese el nombre del producto: ");
-    scanf("%5s",&registro[cantProductos].nombre);
+    scanf("%5s",&registro[cantProductos].nombre);   
     printf("por favor, ingrese la cantidad en stock: ");
     scanf("%i",&total);
     if (total==0||total>100){
