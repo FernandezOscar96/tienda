@@ -7,17 +7,17 @@ int agregarProducto(int cantProductos);
 void lista(int cantProductos);
 void listaTamano(int cantProductos, char op);
 struct registro{
-    char nombre[12][5];
+    char nombre[5];
 	int stock;
 	int codigBarras;
     char tamano;
-    }registro[3];
+    }registro[4];
 //para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 
 //por encima de registro[], ya que uno especifica la cantidad de productos(limite) y 
 //el otro la cantidad que puede ser registrada(registro[])
 int main(){
     int opcion1=0,opcion2=0,opcion3=0;
-    int cantProductos=0,limite=4;
+    int cantProductos=0,limite=5;
     while(opcion1!=3){
         menu1();
         while(scanf("%i",&opcion1)==0){
@@ -137,7 +137,7 @@ void menu3(){
 int agregarProducto(int cantProductos){
     int opcion3=0,total;
     printf("\npor favor, ingrese el nombre del producto: ");
-    scanf("%s",&registro[cantProductos].nombre);
+    scanf("%5s",&registro[cantProductos].nombre);
     printf("por favor, ingrese la cantidad en stock: ");
     scanf("%i",&total);
     if (total==0||total>100){
@@ -200,14 +200,15 @@ void lista(int cantProductos){
         }
         printf("  tamanio del producto: ");
         if (registro[a].tamano=='s'){
-            printf("S\n");
+            printf("S");
         }
         if (registro[a].tamano=='m'){
-            printf("M\n");
+            printf("M");
         }
         if (registro[a].tamano=='l'){
-            printf("L\n");
+            printf("L");
         }
+        printf("\n");
     }  
 }
 
@@ -234,15 +235,16 @@ system("cls");
             }
             printf("  tamanio del producto: ");
             if (registro[a].tamano=='s'){
-                printf("S\n");
+                printf("S");
             }
             if (registro[a].tamano=='m'){
-                printf("M\n");
+                printf("M");
             }
             if (registro[a].tamano=='l'){
-                printf("L\n");
+                printf("L");
                 
             }
+            printf("\n");
         }
     }
 }
