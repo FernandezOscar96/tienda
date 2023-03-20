@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 void menu1();
 void menu2();
 void menu3();
@@ -13,7 +12,9 @@ struct registro{
 	int codigBarras;
     char tamano;
     }registro[3];
-//para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 por encima de registro[], ya que uno especifica la cantidad de productos(limite) y el otro la cantidad que puede ser registrada(registro[])
+//para llevar cuenta de cuantos productos se pueden ingresar limite siempre debe llevar +1 
+//por encima de registro[], ya que uno especifica la cantidad de productos(limite) y 
+//el otro la cantidad que puede ser registrada(registro[])
 int main(){
     int opcion1=0,opcion2=0,opcion3=0;
     int cantProductos=0,limite=4;
@@ -170,7 +171,8 @@ void lista(int cantProductos){
     for (int a = 0; a < cantProductos; a++){
         int contador=0;  
         int div=registro[a].codigBarras;
-        //con este while se sabe de cuantos digitos es el codigo de barras, lo que hace es dividir el codigo de barras copiado por 10 para ir sacando 1 digito en cada recorrido del while;
+        //con este while se sabe de cuantos digitos es el codigo de barras, lo que hace es dividir 
+        //el codigo de barras copiado por 10 para ir sacando 1 digito en cada recorrido del while;
         while (div != 0) {
             contador++;
             div /= 10;
