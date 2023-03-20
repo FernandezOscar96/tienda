@@ -13,7 +13,7 @@ struct registro{
 	int codigBarras;
     char tamano;
     }registro[99999];
-int main(){
+int main(void){
     int opcion1=0,opcion2=0,opcion3=0;
     int cantProductos=0,limite=0;
     printf("la cantidad de productos maximos es: %i\n",limite);
