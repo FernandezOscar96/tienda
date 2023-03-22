@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 void menu1();
 void menu2();
 void menu3();
@@ -223,17 +224,25 @@ int limitador(int limite){
 }
 int agregarProducto(int cantProductos){
     int opcion3=0,total;
+    char nombre[6]="";
     printf("\npor favor, ingrese el nombre del producto: ");
-    scanf("%5s",&registro[cantProductos].nombre);   
+    scanf("%s",&nombre);
+    if (((int)strlen(nombre))>5){
+        system("cls");
+        printf("\nnombre no permitido.\n");
+        return 0;
+    }
     printf("por favor, ingrese la cantidad en stock: ");
     scanf("%i",&total);
     if (total==0||total>100){
-        printf("exede cantidad de stock.");
+        system("cls");
+        printf("exede cantidad de stock.\n");
         return 0;
     }
     printf("por favor, ingrese el codigo de barras(maximo 9 digitos): ");
     scanf("%i",&registro[cantProductos].codigBarras);
     registro[cantProductos].stock=total;
+    strcpy(registro[cantProductos].nombre,nombre);
     printf("por favor, elija el tamanio del producto:\n");
     while (opcion3<1||opcion3>3){
         printf("1. Pequenio\t2. Mediano\t3. Grande\n");
