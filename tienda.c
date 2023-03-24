@@ -23,9 +23,7 @@ int main(void){
     while(opcion1!=3){
         menu1();
         while(scanf("%i",&opcion1)==0){
-            //al poner el scan dentro del while se evita que '0' sea una opcion
 				while (getchar() !='\n');
-                //con este getchar se evita que se pueda agregar una palabra
 				system("cls");
     			menu1();
     		};
@@ -74,29 +72,28 @@ int main(void){
                                 menu3();
                             };
                             switch (opcion3){
-
                                 case 1:
-                                    op='s';
-                                    listaTamano(cantProductos,op);
-                                    break;
+                                op='s';
+                                listaTamano(cantProductos,op);
+                                break;
                                 case 2:
-                                    op='m';
-                                    listaTamano(cantProductos,op);
-                                    break;
+                                op='m';
+                                listaTamano(cantProductos,op);
+                                break;
                                 case 3:
-                                    op='l';
-                                    listaTamano(cantProductos,op);
-                                    break;
+                                op='l';
+                                listaTamano(cantProductos,op);
+                                break;
                                 case 4:
-                                    system("cls");
-                                    break;
+                                system("cls");
+                                break;
                                 default:
-                                    system("cls");
-                                    break;
+                                system("cls");
+                                break;
                             }
                         }
                         break;
-                    case 4:
+                        case 4:
                         system("cls");
                         break;
                         default:
@@ -104,12 +101,12 @@ int main(void){
                         break;
                     }
                 }
-                break;
+            break;
             case 3:
-                break;
+            break;
             default:
-                system("cls");
-                break;
+            system("cls");
+            break;
         }
     }
     return 0;
@@ -160,13 +157,13 @@ void lista(int cantProductos){
         }
         printf("  tamanio del producto: ");
         if (registro[a].tamano=='s'){
-            printf("S");
+            printf("(S)");
         }
         if (registro[a].tamano=='m'){
-            printf("M");
+            printf("(M)");
         }
         if (registro[a].tamano=='l'){
-            printf("L");
+            printf("(L)");
         }
         printf("\n");
     }  
@@ -194,13 +191,13 @@ system("cls");
             }
             printf("  tamanio del producto: ");
             if (registro[a].tamano=='s'){
-                printf("S");
+                printf("(S)");
             }
             if (registro[a].tamano=='m'){
-                printf("M");
+                printf("(M)");
             }
             if (registro[a].tamano=='l'){
-                printf("L");  
+                printf("(L)");  
             }
             printf("\n");
         }
@@ -223,10 +220,10 @@ int limitador(int limite){
 }
 int agregarProducto(int cantProductos){
     int opcion3=0,total;
-    char nombre[6]="";
+    char nombre[6];
     printf("\npor favor, ingrese el nombre del producto: ");
     scanf("%s",&nombre);
-    if (((int)strlen(nombre))>5){
+    if (strlen(nombre)>5){
         system("cls");
         printf("\nnombre no permitido.\n");
         return 0;
