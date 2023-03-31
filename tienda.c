@@ -13,10 +13,11 @@ struct registro{
 	int stock;
 	int codigBarras;
     char tamano;
-    }registro[99999];
+    }registro[0];
 int main(void){
     int opcion1=0,opcion2=0,opcion3=0;
     int cantProductos=0,limite=0;
+    struct registro registro[limite];
     printf("la cantidad de productos maximos es: %i\n",limite);
     limite=limitador(limite);
     printf("la cantidad de productos maximos es: %i\n",limite);
