@@ -23,6 +23,7 @@ int main(void){
     printf("la cantidad de productos maximos es: %i\n",limite);
     while(opcion1!=3){
         menu1();
+        fflush(stdin);
         while(scanf("%i",&opcion1)==0){
 				while (getchar() !='\n');
 				system("cls");
@@ -44,6 +45,7 @@ int main(void){
                 system("cls");
                 while (opcion2!=4){
                     menu2();
+                    fflush(stdin);
                     while( scanf("%i",&opcion2)==0){
                         while (getchar() != '\n');
                         system("cls");
@@ -67,6 +69,7 @@ int main(void){
                         while (opcion3!=4){
                             char op;
                             menu3();
+                            fflush(stdin);
                             while( scanf("%i",&opcion3)==0){
                                 while (getchar() != '\n');
                                 system("cls");
