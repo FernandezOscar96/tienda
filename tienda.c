@@ -8,6 +8,7 @@ void lista(int cantProductos);
 void listaTamano(int cantProductos, char op);
 int limitador(int limite);
 int agregarProducto(int cantProductos);
+void ordenarLista(int cantProductos);
 struct registro{
     char nombre[5];
 	int stock;
@@ -43,7 +44,7 @@ int main(void){
             case 2:
                 opcion2=0;
                 system("cls");
-                while (opcion2!=4){
+                while (opcion2!=5){
                     menu2();
                     fflush(stdin);
                     while( scanf("%i",&opcion2)==0){
@@ -51,19 +52,21 @@ int main(void){
                         system("cls");
                         menu2();
                     };
-                    switch (opcion2)
-                    {
+                    switch (opcion2){
                     case 1:
                         lista(cantProductos);              
                         break;
                     case 2:
+                        ordenarLista(cantProductos);
+                        break;
+                    case 3:
                         system("cls");
                         printf("\nla cantidad de productos ingresados es de: %i\n", cantProductos);
                         if (cantProductos==limite){
                             printf("se alcanzo el limite de productos a ingresar.\n");
                         }
                         break;
-                    case 3:
+                    case 4:
                     opcion3=0; 
                     system("cls");
                         while (opcion3!=4){
@@ -88,7 +91,7 @@ int main(void){
                                 op='l';
                                 listaTamano(cantProductos,op);
                                 break;
-                                case 4:
+                                case 5:
                                 system("cls");
                                 break;
                                 default:
@@ -97,10 +100,10 @@ int main(void){
                             }
                         }
                         break;
-                        case 4:
+                    case 5:
                         system("cls");
                         break;
-                        default:
+                    default:
                         system("cls");
                         break;
                     }
@@ -124,10 +127,11 @@ void menu1(){
 }
 void menu2(){
     printf ("\nPor favor seleccione una opcion:"); 
-    printf ("\n1. Cantidad total de productos ingresados."); 
-    printf ("\n2. Cantidad numerica de productos.");
-    printf ("\n3. Cantidad de productos de tamanio mediano.");
-    printf ("\n4. volver al menu anterior.\n");
+    printf ("\n1. Cantidad total de productos ingresados.");
+    printf ("\n2. Mostrar productos ordenados alfabeticamente."); 
+    printf ("\n3. Cantidad numerica de productos.");
+    printf ("\n4. Cantidad de productos de tamanio mediano.");
+    printf ("\n5. volver al menu anterior.\n");
 }
 void menu3(){
     printf("\nPor favor, elija un tamanio: \n");
@@ -147,7 +151,7 @@ void lista(int cantProductos){
             contador++;
             div /= 10;
         }
-        printf("\n%i nombre del producto: %s\n",a+1,registro[a].nombre);
+        printf("\n%d.nombre del producto: %s\n",a+1,registro[a].nombre);
         printf("  cantidad en stock del producto: %i\n",registro[a].stock);
         printf("  codigo de barras: ");
         for (int i = 9; i>=contador; i--){
@@ -172,6 +176,45 @@ void lista(int cantProductos){
         printf("\n");
     }  
 }
+void ordenarLista(int cantProductos){
+    system("cls");
+    for (int a=97,b=65;a<=122&&b<=90; a++,b++){
+        int posicion=0;
+        for (int i = 0; i < cantProductos; i++){
+            fflush(stdin);
+            if (((char)a)==(registro[i].nombre[posicion])||((char)b)==(registro[i].nombre[posicion])){
+                int contador=0;  
+                int div=registro[i].codigBarras;
+                while (div != 0) {
+                    contador++;
+                    div /= 10;
+                }
+                printf("\n  nombre del producto: %s\n",registro[i].nombre);
+                printf("  cantidad en stock del producto: %i\n",registro[i].stock);
+                printf("  codigo de barras: ");
+                for (int z = 9; z>=contador; z--){
+                    if (z>contador){
+                        printf("0");
+                    }
+                    if (z==contador){
+                        printf("%d\n",registro[i].codigBarras);
+                    }
+                }
+                printf("  tamanio del producto: ");
+                if (registro[i].tamano=='s'){
+                    printf("(S)");
+                }
+                if (registro[i].tamano=='m'){
+                    printf("(M)");
+                }
+                if (registro[i].tamano=='l'){
+                    printf("(L)");
+                }
+                printf("\n");
+            }
+        }
+    }
+}
 void listaTamano(int cantProductos, char op){
 system("cls");
     for (int a = 0; a < cantProductos; a++){
@@ -182,7 +225,7 @@ system("cls");
                 contador++;
                 div /= 10;
             }
-            printf("\n%i nombre del producto: %s\n",a+1,registro[a].nombre);
+            printf("\n%d.nombre del producto: %s\n",a+1,registro[a].nombre);
             printf("  cantidad en stock del producto: %i\n",registro[a].stock);
             printf("  codigo de barras: ");
             for (int i = 9; i>=contador; i--){
