@@ -1,5 +1,5 @@
 # tienda
-el programa tiene como propocito crear un control de stock 
+el programa tiene como proposito crear un control de stock 
 basico de una tienda donde sus funciones son las siguientes:
 
 - agregar un producto.
