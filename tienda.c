@@ -9,6 +9,7 @@ void listaTamano(int cantProductos, char op);
 int limitador(int limite);
 int agregarProducto(int cantProductos);
 void ordenarLista(int cantProductos);
+int eliminarProducto(int cantProductos);
 struct registro{
     char nombre[5];
 	int stock;
@@ -44,7 +45,7 @@ int main(void){
             case 2:
                 opcion2=0;
                 system("cls");
-                while (opcion2!=5){
+                while (opcion2!=6){
                     menu2();
                     fflush(stdin);
                     while( scanf("%i",&opcion2)==0){
@@ -102,6 +103,10 @@ int main(void){
                         break;
                     case 5:
                         system("cls");
+                        cantProductos=eliminarProducto(cantProductos);
+                        break;
+                    case 6:
+                        system("cls");
                         break;
                     default:
                         system("cls");
@@ -131,7 +136,8 @@ void menu2(){
     printf ("\n2. Mostrar productos ordenados alfabeticamente."); 
     printf ("\n3. Cantidad numerica de productos.");
     printf ("\n4. Cantidad de productos de tamanio mediano.");
-    printf ("\n5. volver al menu anterior.\n");
+    printf ("\n5. eliminar un producto de la lista.");
+    printf ("\n6. volver al menu anterior.\n");
 }
 void menu3(){
     printf("\nPor favor, elija un tamanio: \n");
@@ -313,4 +319,8 @@ int agregarProducto(int cantProductos){
     system("cls");
     printf("producto agregado.\n");
     return 0;
+}
+//aca crear el codigo a para cumplir su funcion
+int eliminarProducto(int cantProductos){
+//TODO
 }
