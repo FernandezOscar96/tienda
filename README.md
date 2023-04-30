@@ -13,9 +13,10 @@ funciones a agregar:
 - editar un producto.
 - busqueda de un producto ya sea por cualquiera de sus caracteristicas.
 - agregar un valor monetario al producto.
+- agregar menus nuevos para diferentes funciones y funcionalidades.
 - agregar a la funcion eliminar producto: 
-  *arreglo de si no coincide o si no encuentra los buscado.
-  *agregar para buscar por codigo o posicion del producto.
+  \n arreglo de si no coincide o si no encuentra los buscado.
+  \n agregar para buscar por codigo o posicion del producto.
 
 otras ideas a futuro:
 - generar una conexion con una interface web para que sea mas amigable.
