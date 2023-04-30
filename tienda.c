@@ -5,7 +5,7 @@ void menu1();
 void menu2();
 void menu3();
 void lista(int cantProductos);
-void listaTamano(int cantProductos, char op);
+void listaTamano(int cantProductos, char*op);
 int limitador(int limite);
 int agregarProducto(int cantProductos);
 void ordenarLista(int cantProductos);
@@ -14,7 +14,7 @@ struct registro{
     char nombre[5];
 	int stock;
 	int codigBarras;
-    char tamano;
+    char tamano[2];
     }registro[0];
 int main(void){
     int opcion1=0,opcion2=0,opcion3=0;
@@ -71,7 +71,7 @@ int main(void){
                     opcion3=0; 
                     system("cls");
                         while (opcion3!=4){
-                            char op;
+                            char op[2];
                             menu3();
                             fflush(stdin);
                             while( scanf("%i",&opcion3)==0){
@@ -81,15 +81,15 @@ int main(void){
                             };
                             switch (opcion3){
                                 case 1:
-                                op='s';
+                                strcpy(op,"s");
                                 listaTamano(cantProductos,op);
                                 break;
                                 case 2:
-                                op='m';
+                                strcpy(op,"m");
                                 listaTamano(cantProductos,op);
                                 break;
                                 case 3:
-                                op='l';
+                                strcpy(op,"l");
                                 listaTamano(cantProductos,op);
                                 break;
                                 case 5:
@@ -170,13 +170,13 @@ void lista(int cantProductos){
             }
         }
         printf("  tamanio del producto: ");
-        if (registro[a].tamano=='s'){
+        if (strcmp(registro[a].tamano,"s") ==0){
             printf("(S)");
         }
-        if (registro[a].tamano=='m'){
+        if (strcmp(registro[a].tamano,"m") ==0){
             printf("(M)");
         }
-        if (registro[a].tamano=='l'){
+        if (strcmp(registro[a].tamano,"l") ==0){
             printf("(L)");
         }
         printf("\n");
@@ -207,13 +207,13 @@ void ordenarLista(int cantProductos){
                     }
                 }
                 printf("  tamanio del producto: ");
-                if (registro[i].tamano=='s'){
+                if (strcmp(registro[a].tamano,"s") ==0){
                     printf("(S)");
                 }
-                if (registro[i].tamano=='m'){
+                if (strcmp(registro[a].tamano,"m") ==0){
                     printf("(M)");
                 }
-                if (registro[i].tamano=='l'){
+                if (strcmp(registro[a].tamano,"l") ==0){
                     printf("(L)");
                 }
                 printf("\n");
@@ -221,10 +221,10 @@ void ordenarLista(int cantProductos){
         }
     }
 }
-void listaTamano(int cantProductos, char op){
+void listaTamano(int cantProductos, char*op){
 system("cls");
     for (int a = 0; a < cantProductos; a++){
-        if (registro[a].tamano==op){
+        if (strcmp(registro[a].tamano,op) ==0){
             int contador=0;  
             int div=registro[a].codigBarras;
             while (div != 0) {
@@ -243,13 +243,13 @@ system("cls");
                 }
             }
             printf("  tamanio del producto: ");
-            if (registro[a].tamano=='s'){
+            if (strcmp(registro[a].tamano,"s") ==0){
                 printf("(S)");
             }
-            if (registro[a].tamano=='m'){
+            if (strcmp(registro[a].tamano,"m") ==0){
                 printf("(M)");
             }
-            if (registro[a].tamano=='l'){
+            if (strcmp(registro[a].tamano,"l") ==0){
                 printf("(L)");  
             }
             printf("\n");
@@ -303,11 +303,11 @@ int agregarProducto(int cantProductos){
                 printf("1. Pequeño\t2. Mediano\t3. Grande\n");
     		};
         switch (opcion3){
-        case 1: registro[cantProductos].tamano='s';
+        case 1: strcpy(registro[cantProductos].tamano,"s"); 
         break;
-        case 2: registro[cantProductos].tamano='m';
+        case 2: strcpy(registro[cantProductos].tamano,"m"); 
         break;
-        case 3: registro[cantProductos].tamano='l';
+        case 3: strcpy(registro[cantProductos].tamano,"l"); 
         break;
         default:
         system("cls");
@@ -320,7 +320,32 @@ int agregarProducto(int cantProductos){
     printf("producto agregado.\n");
     return 0;
 }
-//aca crear el codigo a para cumplir su funcion
 int eliminarProducto(int cantProductos){
-//TODO
+    int indice_a_borrar=-1;
+    char nombre[50];
+    printf("\nPor favor, ingrese el nombre que desea borrar:\n");
+    scanf("%s",nombre);
+    for (int i = 0; i < cantProductos; i++){
+        if (strcmp(registro[i].nombre,nombre)==0){
+            indice_a_borrar = i;
+            break;
+        }
+    }
+    if(indice_a_borrar!=-1) {
+        for (int i = indice_a_borrar; i < cantProductos; i++){
+            
+            strcpy(registro[i].nombre,registro[i+1].nombre);
+            registro[i].stock=registro[i+1].stock;
+            registro[i].codigBarras=registro[i+1].codigBarras;
+            strcpy(registro[i].tamano,registro[i+1].tamano);
+        }
+        strcpy(registro[cantProductos].nombre,"");
+        registro[cantProductos].stock=0;
+        registro[cantProductos].codigBarras=0;
+        strcpy(registro[cantProductos].tamano,"");
+        cantProductos--;
+        printf("Producto eliminado de la lista\n");
+        return cantProductos;
+    }
+    
 }
