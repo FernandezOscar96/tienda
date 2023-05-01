@@ -6,10 +6,12 @@ void menu2();
 void menu3();
 void lista(int cantProductos);
 void listaTamano(int cantProductos, char*op);
+void ordenarLista(int cantProductos);
+void limpiar(int cantProductos);
 int limitador(int limite);
 int agregarProducto(int cantProductos);
-void ordenarLista(int cantProductos);
 int eliminarProducto(int cantProductos);
+
 struct registro{
     char nombre[5];
 	int stock;
@@ -207,13 +209,13 @@ void ordenarLista(int cantProductos){
                     }
                 }
                 printf("  tamanio del producto: ");
-                if (strcmp(registro[a].tamano,"s") ==0){
+                if (strcmp(registro[i].tamano,"s")==0){
                     printf("(S)");
                 }
-                if (strcmp(registro[a].tamano,"m") ==0){
+                if (strcmp(registro[i].tamano,"m")==0){
                     printf("(M)");
                 }
-                if (strcmp(registro[a].tamano,"l") ==0){
+                if (strcmp(registro[i].tamano,"l")==0){
                     printf("(L)");
                 }
                 printf("\n");
@@ -255,6 +257,10 @@ system("cls");
             printf("\n");
         }
     }
+}
+//agregar la logica en la funcion limpiar
+void limpiar(int cantProductos){
+
 }
 int limitador(int limite){
     int preselec=0;
@@ -324,28 +330,46 @@ int eliminarProducto(int cantProductos){
     int indice_a_borrar=-1;
     char nombre[50];
     printf("\nPor favor, ingrese el nombre que desea borrar:\n");
+    printf("preciona 0 para volver al menu anterior.\n");
     scanf("%s",nombre);
-    for (int i = 0; i < cantProductos; i++){
-        if (strcmp(registro[i].nombre,nombre)==0){
-            indice_a_borrar = i;
-            break;
-        }
-    }
-    if(indice_a_borrar!=-1) {
-        for (int i = indice_a_borrar; i < cantProductos; i++){
+    int a=0;
+    while (a<1){
+        for (int i = 0; i < cantProductos; i++){
+            if (strcmp(registro[i].nombre,nombre)==0){
+                indice_a_borrar = i;
+                break;
+            }
+            if (strcmp(nombre,"0")==0){
+                system("cls");
+                a++;
+                return cantProductos;
+                break;
+            }
             
-            strcpy(registro[i].nombre,registro[i+1].nombre);
-            registro[i].stock=registro[i+1].stock;
-            registro[i].codigBarras=registro[i+1].codigBarras;
-            strcpy(registro[i].tamano,registro[i+1].tamano);
         }
-        strcpy(registro[cantProductos].nombre,"");
-        registro[cantProductos].stock=0;
-        registro[cantProductos].codigBarras=0;
-        strcpy(registro[cantProductos].tamano,"");
-        cantProductos--;
-        printf("Producto eliminado de la lista\n");
-        return cantProductos;
-    }
-    
+        if(indice_a_borrar!=-1) {
+            for (int i = indice_a_borrar; i < cantProductos; i++){
+                strcpy(registro[i].nombre,registro[i+1].nombre);
+                registro[i].stock=registro[i+1].stock;
+                registro[i].codigBarras=registro[i+1].codigBarras;
+                strcpy(registro[i].tamano,registro[i+1].tamano);
+            }
+            strcpy(registro[cantProductos].nombre,"");
+            registro[cantProductos].stock=0;
+            registro[cantProductos].codigBarras=0;
+            strcpy(registro[cantProductos].tamano,"");
+            cantProductos--;
+            system("cls");
+            printf("Producto eliminado de la lista\n");
+            a++;
+            return cantProductos;
+        }
+        else{
+            system("cls");
+            printf("nombre no encontrado.\n");
+            printf("\nPor favor, ingrese el nombre que desea borrar:\n");
+            printf("preciona 0 para volver al menu anterior.\n");
+            scanf("%s",nombre);
+        }
+    }    
 }
