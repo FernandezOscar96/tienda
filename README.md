@@ -10,6 +10,7 @@ basico de una tienda donde sus funciones son las siguientes:
 - eliminar un producto(de momento solo sera por nombre).
 
 funciones a agregar:
+- agregar funcion de limpiar datos vacios en el array.
 - editar un producto.
 - busqueda de un producto ya sea por cualquiera de sus caracteristicas.
 - agregar un valor monetario al producto.
