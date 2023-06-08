@@ -13,6 +13,7 @@ funciones a agregar:
 - agregar funcion de limpiar datos vacios en el array.
 - editar un producto.
 - busqueda de un producto ya sea por cualquiera de sus caracteristicas.
+- agregar un id generado automaticamente.
 - agregar un valor monetario al producto.
 - agregar menus nuevos para diferentes funciones y funcionalidades.
 - agregar a la funcion eliminar producto: 
